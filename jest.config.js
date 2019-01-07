@@ -1,7 +1,7 @@
 module.exports = {
   verbose: true,
 
-  testMatch: ['*/**/unit/*.test.js'],
+  testMatch: ['*/**/*.test.js'],
 
   moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx'],
 
