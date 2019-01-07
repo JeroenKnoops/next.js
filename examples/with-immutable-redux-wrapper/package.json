@@ -1,5 +1,5 @@
 {
-  "name": "with-redux-wrapper",
+  "name": "with-immutable-redux-wrapper",
   "version": "1.0.0",
   "scripts": {
     "dev": "next",

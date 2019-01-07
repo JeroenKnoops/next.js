@@ -1,5 +1,5 @@
 /* eslint-env jest */
-import Router from 'next-server/dist/lib/router/router'
+import Router from 'router/router'
 
 class PageLoader {
   constructor (options = {}) {
@@ -12,7 +12,7 @@ class PageLoader {
     this.loaded[route] = true
 
     if (this.options.delay) {
-      return new Promise((resolve) => setTimeout(resolve, this.options.delay))
+      return new Promise(resolve => setTimeout(resolve, this.options.delay))
     }
   }
 
@@ -46,7 +46,12 @@ describe('Router', () => {
       router.prefetch('route4')
 
       expect(Object.keys(pageLoader.prefetched).length).toBe(4)
-      expect(Object.keys(pageLoader.prefetched)).toEqual(['route1', 'route2', 'route3', 'route4'])
+      expect(Object.keys(pageLoader.prefetched)).toEqual([
+        'route1',
+        'route2',
+        'route3',
+        'route4'
+      ])
     })
 
     it('should run all the jobs', async () => {

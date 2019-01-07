@@ -1,46 +1,32 @@
 module.exports = {
-  testEnvironment: 'node',
-
-  expand: true,
-
   verbose: true,
 
-  testMatch: ['**/*.test.js'],
+  testMatch: ['*/**/unit/*.test.js'],
 
-  coverageDirectory: './test/coverage',
+  moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx'],
 
-  collectCoverageFrom: [
-    '**/packages/**/*.{js,jsx,ts,tsx}'
+  modulePaths: [
+    '<rootDir>/test/lib',
+    '<rootDir>/packages/next/lib/',
+    '<rootDir>/packages/next-server/lib/'
   ],
-
-  coveragePathIgnorePatterns: [
-    'node_modules/(?!(@next|next))',
-    'examples/.'
-  ],
-
-  testPathIgnorePatterns: [
-    'node_modules/(?!(@next|next))',
-    'examples/.'
-  ],
-
-  transformIgnorePatterns: [
-    'node_modules/(?!(@next|next))'
-  ],
-
-  moduleFileExtensions: [
-    'js',
-    'json',
-    'jsx',
-    'ts',
-    'tsx'
-  ],
-
-  modulePaths: ['<rootDir>/test/lib'],
   globalSetup: '<rootDir>/test/jest-global-setup.js',
   globalTeardown: '<rootDir>/test/jest-global-teardown.js',
 
+  collectCoverage: true,
+  collectCoverageFrom: [
+    '**/{next,next-server}/**/*.{js,jsx}',
+    '!**/node_modules/**',
+    '!**/dist/**'
+  ],
+  coverageDirectory: './test/coverage',
   coverageReporters: ['text', 'lcov', 'cobertura'],
-  reporters: [
-    'default'
-  ].concat(process.env.JEST_JUNIT_OUTPUT ? ['jest-junit'] : [])
+  reporters: ['default'].concat(
+    process.env.JEST_JUNIT_OUTPUT ? ['jest-junit'] : []
+  ),
+
+  transform: {
+    '^.+\\.tsx?$': 'ts-jest',
+    '^.+\\.jsx?$': 'babel-jest'
+  }
 }

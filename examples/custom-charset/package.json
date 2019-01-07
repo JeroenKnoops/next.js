@@ -1,5 +1,5 @@
 {
-  "name": "custom-server",
+  "name": "custom-charset",
   "version": "1.0.0",
   "scripts": {
     "dev": "node server.js",

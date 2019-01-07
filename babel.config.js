@@ -1,22 +1,10 @@
-function isBabelLoader (caller) {
-  return caller && caller.name === 'babel-loader'
-}
-
 module.exports = function (api) {
-  if (api.env('test') && !api.caller(isBabelLoader)) {
-    return {
-      presets: [
-        ['@babel/env', {
-          targets: {
-            node: 'current'
-          }
-        }, 'next/babel']
-      ],
-      plugins: ['dynamic-import-node', '@babel/plugin-proposal-class-properties']
-    }
-  }
+  api.cache(true)
   return {
-    presets: [
-      'next/babel'
-    ]}
+    presets: ['@babel/env', '@babel/preset-typescript', '@babel/preset-react'],
+    plugins: [
+      '@babel/plugin-proposal-class-properties',
+      '@babel/plugin-syntax-dynamic-import'
+    ]
+  }
 }
