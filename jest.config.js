@@ -1,7 +1,9 @@
 module.exports = {
-  verbose: true,
+  testMatch: ['<rootDir>/test/**/*.test.js'],
 
-  testMatch: ['*/**/*.test.js'],
+  verbose: true,
+  bail: true,
+  testEnvironment: 'node',
 
   moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx'],
 
